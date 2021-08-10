@@ -1,26 +1,21 @@
 import json
+from re import split
 from typing import List
-import phonenumbers 
+import phonenumbers
 from phonenumbers import geocoder
 from urllib import response
 from urllib.request import urlopen
 
-phonenumbers00 = phonenumbers.parse("+2349048188177")
-output_info = geocoder.description_for_number(phonenumbers00, 'en')
+phone_number = str(input("input your mobile number in the official format: "))
+
+phone_number = phonenumbers.parse(phone_number)
+output_info = geocoder.description_for_number(phone_number, 'en')
 
 print(output_info)
 
 url = 'https://ipinfo.io/'
 
-response = urlopen(url)
+data = json.load(urlopen(url))
 
-
-
-
-
-
-
-
-
-
-
+# print out data
+print(data)
